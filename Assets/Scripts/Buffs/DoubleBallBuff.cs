@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class DoubleBallBuff : Buffs
 {
-    protected override void Active(PlayerMover playerMover)
+    protected override void Active(PlayerBalls playerBalls)
     {
         List<Ball> balls = new List<Ball>();
-        foreach (var ball in playerMover.Balls)
+        foreach (var ball in playerBalls.Balls)
         {
-            balls.Add(Instantiate(ball,playerMover.BallContainer));           
+            var newball = Instantiate(ball, ball.transform.position,Quaternion.identity, playerBalls.BallContainer);
+            newball.RunBall();
+            balls.Add(newball);           
         }
         foreach (var ball in balls)
         {
-            playerMover.Balls.Add(ball);
+            playerBalls.Balls.Add(ball);
         }       
-        Destroy(gameObject);
     }
 }

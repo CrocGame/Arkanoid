@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SizeDebuff : Buffs
 {
-    protected override void Active(PlayerMover playerMover)
+    protected override void Active(PlayerBalls playerBalls)
     {
-        Vector3 size = playerMover.gameObject.transform.localScale;
+        Vector3 size = playerBalls.gameObject.transform.localScale;
         size.x-= 0.3f;
         size.x = Mathf.Clamp(size.x,0.4f,1.6f);
-        playerMover.gameObject.transform.localScale = size;
-        Destroy(gameObject);
+        playerBalls.gameObject.transform.localScale = size;       
     }
 }

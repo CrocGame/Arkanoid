@@ -9,6 +9,7 @@ public class MoveBallToPlayer : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (Ball != null)
         Ball.transform.position=transform.position+ _offset;
     }
 

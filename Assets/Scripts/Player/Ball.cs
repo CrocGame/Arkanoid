@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour
         var speed = lastVelocity.magnitude;
         var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
         currentDirection = direction * _speed;
-        _rigidbody.AddForce(currentDirection * 2);
+        _rigidbody.AddForce(currentDirection * (transform.localScale.x+1));
 
     }
     public void RunBall()

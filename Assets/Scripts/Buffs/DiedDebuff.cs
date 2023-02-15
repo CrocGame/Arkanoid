@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DiedDebuff : Buffs
 {
-    protected override void Active(PlayerMover playerMover)
+    protected override void Active(PlayerBalls playerBalls)
     {
-        for (int i = 0; i < playerMover.Balls.Count; i++)
+        while (playerBalls.Balls.Count!=0)
         {
-            playerMover.DestroyBall(playerMover.Balls[i]);
+            playerBalls.DestroyBall(playerBalls.Balls[0]);
         }
-        Destroy(gameObject);
     }
 }

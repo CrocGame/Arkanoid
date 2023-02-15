@@ -4,23 +4,23 @@ using UnityEngine;
 
 public abstract class Buffs : MonoBehaviour
 {
-    [SerializeField] private int _valueChance;
+    [SerializeField] private Rigidbody _rigidbody;
+    public int ValueChance;
 
-
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position -= Vector3.forward * 5 * Time.deltaTime;
+        _rigidbody.velocity = -Vector3.forward * 5;
     }
 
-    protected abstract void Active(PlayerMover playerMover);
+    protected abstract void Active(PlayerBalls playerBalls);
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerMover playerMover))
+        if (collision.gameObject.TryGetComponent(out PlayerBalls playerBalls))
         {
-            Active(playerMover);
-            
-        }
+            Active(playerBalls);
+            Destroy(gameObject);
+        }             
     }
 
 }
